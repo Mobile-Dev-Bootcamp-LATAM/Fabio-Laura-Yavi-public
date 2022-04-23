@@ -9,7 +9,7 @@ const CountryCtn = styled.div`
   padding: 1rem;
   display: flex;
   gap: 1rem;
-  border: 0.125rem solid black;
+  border: 1px solid gray;
   border-radius: 5px;
 
   :hover {
@@ -25,8 +25,6 @@ const CountryCard = ({ country }) => {
 
   const handleCardClick = (clickedCountry) => {
     return () => {
-      console.log("clicked!");
-      console.log({ clickedCountry });
       dispatch({
         type: actionTypes.SELECT_COUNTRY,
         payload: clickedCountry,

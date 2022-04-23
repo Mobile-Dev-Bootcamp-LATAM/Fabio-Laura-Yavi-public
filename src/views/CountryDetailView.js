@@ -30,24 +30,31 @@ const Details = styled.div`
     }
 `;
 
+const DetailsCtn = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+`;
+
 const CountryDetailView = () => {
     const reducer = useContext(context);
     const { state, dispatch } = reducer;
     const { selectedCountry, currentCountry } = state;
-    console.log({ selectedCountry, currentCountry });
 
     return (
         <div>
-            <div>
+            <DetailsCtn>
                 <Title>{ selectedCountry.name }</Title>
-                <Flag src={ selectedCountry.flags.png }/>
+                <Flag src={ selectedCountry.flags.png} size={5}/>
                 <Details>
                     <label>Capital</label>
                     <span>{ selectedCountry.capital }</span>
                     <label>Population</label>
                     <span>{ selectedCountry.population }</span>
                     <label>Language</label>
-                    <span>{ getLanguage(selectedCountry.languages.length)}</span>
+                    <span>{ getLanguage(selectedCountry.languages)}</span>
                     <label>Area</label>
                     <span>{ selectedCountry.area }</span>
                     <label>Lat</label>
@@ -58,7 +65,7 @@ const CountryDetailView = () => {
                     <span>{ getCurrency(selectedCountry.currencies) }</span>
                 </Details>
                 <CurrencyConverter countryA={currentCountry} countryB={selectedCountry}/>
-            </div>
+            </DetailsCtn>
         </div>
     );
 }

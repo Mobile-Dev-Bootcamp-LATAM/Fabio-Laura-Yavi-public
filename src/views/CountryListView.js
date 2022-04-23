@@ -12,23 +12,25 @@ const ViewCtn = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 `;
 
 const ViewHeader = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding: 1rem;
 `;
 
 const List = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
 `;
 
 const findByCountryCode = (countries, countryCode) => {
   for (let country of countries) {
-    console.log({ country, countryCode });
     if (country.alpha2Code === countryCode) {
-      console.log("found!");
       return country;
     }
   }
@@ -42,7 +44,6 @@ const CountryListView = () => {
   const { countries, filterBy } = state;
 
   const filterdCountries = countries.filter(c => {
-      console.log({ c })
       return c.name.toLowerCase().includes(filterBy.toLowerCase());
   })
 

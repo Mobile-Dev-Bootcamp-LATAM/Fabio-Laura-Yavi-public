@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react"
-import { Flag } from "../atoms/Flag"
+import styled from "styled-components";
+import { Flag } from "../atoms/Flag";
+
+const CurrencyConverterCtn = styled.div`
+    display: flex;
+    gap: 2rem;
+`;
 
 const CurrencyConverter = ({ countryA, countryB}) => {
     const [rate, setRate] = useState('');
@@ -13,16 +19,16 @@ const CurrencyConverter = ({ countryA, countryB}) => {
     }, [countryB]);
 
     return (
-        <div>
+        <CurrencyConverterCtn>
             <div>
-                <Flag src={countryA.flags.png}/>
+                <Flag src={countryA.flags.png} size={3}/>
                 <div>1 {countryA.currencies[0].symbol}</div>
             </div>
             <div>
-                <Flag src={countryB.flags.png}/>
+                <Flag src={countryB.flags.png} size={3}/>
                 <div>{rate} {countryB.currencies[0].symbol}</div>
             </div>
-        </div>
+        </CurrencyConverterCtn>
     )
 }
 
